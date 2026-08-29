@@ -1,0 +1,182 @@
+[
+  {
+    "id": "sub_9441d0b5",
+    "timestamp": 1787986530664,
+    "fullCode": "ESTJ-AH",
+    "coreCode": "ESTJ",
+    "variantKey": "AH",
+    "title": "ผู้อำนวยการผู้ทรงพลัง",
+    "testMode": "full",
+    "scores": {
+      "energy": {
+        "pole1": "E",
+        "pole2": "I",
+        "score": 50
+      },
+      "input": {
+        "pole1": "S",
+        "pole2": "N",
+        "score": 50
+      },
+      "deciding": {
+        "pole1": "T",
+        "pole2": "F",
+        "score": 50
+      },
+      "structure": {
+        "pole1": "J",
+        "pole2": "P",
+        "score": 50
+      },
+      "identity": {
+        "pole1": "A",
+        "pole2": "O",
+        "score": 50
+      },
+      "relating": {
+        "pole1": "H",
+        "pole2": "C",
+        "score": 50
+      }
+    },
+    "ip": "127.0.0.1",
+    "geo": {
+      "city": "Khlong Luang",
+      "region": "Pathum Thani",
+      "country": "Thailand",
+      "countryCode": "TH",
+      "lat": 14.065074,
+      "lng": 100.645933,
+      "org": "TRUE INTERNET CORPORATION CO. LTD."
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Chrome",
+      "screen": "1920x1080",
+      "type": "Desktop",
+      "language": "th"
+    }
+  },
+  {
+    "id": "sub_732c8a9c",
+    "timestamp": 1787986142018,
+    "fullCode": "ESTJ-AH",
+    "coreCode": "ESTJ",
+    "variantKey": "AH",
+    "title": "ผู้อำนวยการผู้ทรงพลัง",
+    "testMode": "quick",
+    "scores": {
+      "energy": {
+        "pole1": "E",
+        "pole2": "I",
+        "score": 50
+      },
+      "input": {
+        "pole1": "S",
+        "pole2": "N",
+        "score": 50
+      },
+      "deciding": {
+        "pole1": "T",
+        "pole2": "F",
+        "score": 50
+      },
+      "structure": {
+        "pole1": "J",
+        "pole2": "P",
+        "score": 50
+      },
+      "identity": {
+        "pole1": "A",
+        "pole2": "O",
+        "score": 50
+      },
+      "relating": {
+        "pole1": "H",
+        "pole2": "C",
+        "score": 50
+      }
+    },
+    "ip": "127.0.0.1",
+    "geo": {
+      "city": "Khlong Luang",
+      "region": "Changwat Pathum Thani",
+      "country": "Thailand",
+      "countryCode": "TH",
+      "lat": 14.0646611,
+      "lng": 100.6460614,
+      "org": "True Online"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Chrome",
+      "screen": "1920x1080",
+      "type": "Desktop",
+      "language": "th",
+      "colorDepth": 24,
+      "pixelRatio": 1,
+      "hardwareConcurrency": 8
+    }
+  },
+  {
+    "id": "sub_9f6c00ec",
+    "timestamp": 1787985798720,
+    "fullCode": "ESTJ-AH",
+    "coreCode": "ESTJ",
+    "variantKey": "AH",
+    "title": "ผู้อำนวยการผู้ทรงพลัง",
+    "testMode": "quick",
+    "scores": {
+      "energy": {
+        "pole1": "E",
+        "pole2": "I",
+        "score": 50
+      },
+      "input": {
+        "pole1": "S",
+        "pole2": "N",
+        "score": 50
+      },
+      "deciding": {
+        "pole1": "T",
+        "pole2": "F",
+        "score": 50
+      },
+      "structure": {
+        "pole1": "J",
+        "pole2": "P",
+        "score": 50
+      },
+      "identity": {
+        "pole1": "A",
+        "pole2": "O",
+        "score": 50
+      },
+      "relating": {
+        "pole1": "H",
+        "pole2": "C",
+        "score": 50
+      }
+    },
+    "ip": "127.0.0.1",
+    "geo": {
+      "city": "Khlong Luang",
+      "region": "Changwat Pathum Thani",
+      "country": "Thailand",
+      "countryCode": "TH",
+      "lat": 14.0646611,
+      "lng": 100.6460614,
+      "org": "True Online"
+    },
+    "device": {
+      "os": "Windows",
+      "browser": "Chrome",
+      "screen": "1920x1080",
+      "type": "Desktop",
+      "language": "en-US",
+      "colorDepth": 24,
+      "pixelRatio": 0.75,
+      "hardwareConcurrency": 8
+    }
+  }
+]

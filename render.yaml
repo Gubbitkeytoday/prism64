@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: prism64
+    env: python
+    buildCommand: ""
+    startCommand: "python server_mcp.py"
+    plan: free
+    autoDeploy: true

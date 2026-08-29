@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PRISM64 — ค้นพบ 64 เฉดสีในตัวคุณ | Discover the 64 Shades of Your Personality</title>
+
+  <!-- Cache Control -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <!-- SEO -->
+  <meta name="description" content="PRISM64 — ระบบบุคลิกภาพ 64 แบบที่ละเอียดและตรงจุดที่สุด สรุปให้จบใน 3 นาที ไม่มีน้ำ ไม่กำกวม พร้อมแบบทดสอบฟรี" />
+  <meta name="keywords" content="PRISM64, personality, บุคลิกภาพ, MBTI, 16 types, 64 types, personality test, แบบทดสอบบุคลิกภาพ, จิตวิทยา" />
+  <meta name="author" content="PRISM64" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://prism64.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PRISM64 — One light. Sixty-four shades." />
+  <meta property="og:description" content="Discover the 64 shades of your personality. 6 dimensions, 4 spectra, 64 types. Free personality assessment." />
+  <meta property="og:image" content="assets/img/brand/hero-prism.jpg" />
+  <meta property="og:url" content="https://prism64.app/" />
+  <meta property="og:site_name" content="PRISM64" />
+  <meta property="og:locale" content="th_TH" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PRISM64 — One light. Sixty-four shades." />
+  <meta name="twitter:description" content="Discover the 64 shades of your personality." />
+  <meta name="twitter:image" content="assets/img/brand/hero-prism.jpg" />
+
+  <!-- Favicon: The Refractive Hexa-Prism -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='topF' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23C084FC'/%3E%3Cstop offset='1' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3ClinearGradient id='lF' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236366F1'/%3E%3Cstop offset='1' stop-color='%233B82F6'/%3E%3C/linearGradient%3E%3ClinearGradient id='rF' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23EC4899'/%3E%3Cstop offset='1' stop-color='%23F43F5E'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon points='20,4 34,12 20,20 6,12' fill='url(%23topF)'/%3E%3Cpolygon points='6,12 20,20 20,36 6,28' fill='url(%23lF)'/%3E%3Cpolygon points='20,20 34,12 34,28 20,36' fill='url(%23rF)'/%3E%3Ccircle cx='20' cy='20' r='3.5' fill='%23FFFFFF' opacity='.9'/%3E%3C/svg%3E" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800;900&family=Kanit:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome & Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/style.css?v=4.3_geomap" />
+
+  <!-- Custom inline helpers for Toast & Story Card -->
+  <style>
+    .toast {
+      position: fixed;
+      bottom: 2.2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(0);
+      background: var(--surface-raised);
+      color: var(--text);
+      padding: .85rem 1.8rem;
+      border-radius: var(--r-full);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-lg);
+      z-index: 500;
+      font-size: .92rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      transition: all .35s var(--ease-spring);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .toast.hidden {
+      opacity: 0;
+      transform: translateX(-50%) translateY(24px);
+      pointer-events: none;
+    }
+    .cast__figure { cursor: pointer; }
+    .fade-view { animation: fadeIn .45s var(--ease-out); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "PRISM64",
+    "alternateName": "PRISM64 Personality System",
+    "url": "https://prism64.app/",
+    "description": "A 64-type personality system with 6 dimensions and 4 spectra.",
+    "inLanguage": ["th", "en"]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- skip link -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- atmosphere background -->
+  <div class="atmos" aria-hidden="true">
+    <div class="atmos__blob atmos__blob--1"></div>
+    <div class="atmos__blob atmos__blob--2"></div>
+    <div class="atmos__blob atmos__blob--3"></div>
+    <div class="atmos__blob atmos__blob--4"></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ============================================================ HEADER -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="#home" class="brand" aria-label="PRISM64 Home">
+        <!-- Iconic Logo: The Refractive Hexa-Prism -->
+        <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="logo-top" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#C084FC"/>
+              <stop offset="100%" stop-color="#8B5CF6"/>
+            </linearGradient>
+            <linearGradient id="logo-left" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#6366F1"/>
+              <stop offset="100%" stop-color="#3B82F6"/>
+            </linearGradient>
+            <linearGradient id="logo-right" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#EC4899"/>
+              <stop offset="100%" stop-color="#F43F5E"/>
+            </linearGradient>
+            <linearGradient id="logo-beam" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#FBBF24" stop-opacity="0.9"/>
+            </linearGradient>
+          </defs>
+          <!-- Hexagonal Crystal Facets (6 Dimensions) -->
+          <polygon points="20,4 34,12 20,20 6,12" fill="url(#logo-top)" />
+          <polygon points="6,12 20,20 20,36 6,28" fill="url(#logo-left)" />
+          <polygon points="20,20 34,12 34,28 20,36" fill="url(#logo-right)" />
+          <!-- Inner Refractive Core -->
+          <polygon points="20,10 28,15 20,20 12,15" fill="rgba(255,255,255,0.4)" />
+          <polygon points="12,15 20,20 20,30 12,25" fill="rgba(255,255,255,0.2)" />
+          <polygon points="20,20 28,15 28,25 20,30" fill="rgba(255,255,255,0.28)" />
+          <!-- Refraction Core Light Spot -->
+          <circle cx="20" cy="20" r="3.5" fill="#FFFFFF" filter="drop-shadow(0 0 6px #FFFFFF)" />
+        </svg>
+        <span class="brand__name">PRISM<span>64</span></span>
+      </a>
+
+      <nav class="nav" id="main-nav" aria-label="Main navigation">
+        <a href="#test" class="nav-btn-test" data-i18n="nav.test">ทำแบบทดสอบ (3 นาที)</a>
+        <a href="#types" data-i18n="nav.types">64 ประเภท</a>
+        <a href="#dimensions" data-i18n="nav.dimensions">6 มิติ</a>
+        <a href="#spectra" data-i18n="nav.about">เกี่ยวกับ</a>
+        <a href="#faq" data-i18n="nav.faq">คำถามที่พบบ่อย</a>
+      </nav>
+
+      <div class="header-tools">
+        <button class="icon-btn" id="lang-toggle" aria-label="Switch language">EN</button>
+        <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+        <button class="icon-btn nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================ MAIN -->
+  <main id="main">
+
+    <!-- ======================================================== VIEW: HOME -->
+    <div id="view-home" class="fade-view">
+
+      <!-- ======================================================== HERO -->
+      <section class="hero" id="hero">
+        <div class="hero__media" aria-hidden="true">
+          <video autoplay muted loop playsinline preload="metadata" poster="assets/video/hero-poster.jpg">
+            <source src="assets/video/hero-prism.webm" type="video/webm" />
+            <source src="assets/video/hero-prism.mp4" type="video/mp4" />
+          </video>
+          <div class="hero__scrim"></div>
+        </div>
+
+        <div class="container hero__inner">
+          <div class="hero__kicker" data-reveal>
+            <b data-i18n="hero.kicker_badge">ฟรี 100%</b>
+            <span data-i18n="hero.kicker">PRISM64 — สรุปตัวตนใน 64 เฉดสี</span>
+          </div>
+
+          <h1 class="display-xl hero__title" data-reveal style="--delay:100ms">
+            <span data-i18n="hero.title_1">ค้นพบ</span>
+            <span class="spectrum-text" data-i18n="hero.title_2">64 เฉดสี</span>
+            <span data-i18n="hero.title_3">ในตัวคุณแบบเจาะลึก</span>
+          </h1>
+
+          <p class="hero__sub" data-reveal style="--delay:200ms" data-i18n="hero.sub">
+            บุคลิกภาพลึกกว่าแค่ 4 ตัวอักษร — สรุปให้จบใน 3 นาที ไม่มีน้ำ ไม่อ้อมค้อม รู้จักจุดแข็ง ข้อควรระวัง และคนที่เข้ากับคุณได้ทันที
+          </p>
+
+          <div class="hero__cta" data-reveal style="--delay:300ms">
+            <a href="#test" class="btn btn--primary btn--lg">
+              <span data-i18n="hero.cta_test">ทำแบบทดสอบฟรี (3 นาที)</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="#types" class="btn btn--ghost btn--lg">
+              <span data-i18n="hero.cta_start">ดู 64 ประเภท</span>
+            </a>
+          </div>
+
+          <p class="hero__note" data-reveal style="--delay:400ms" data-i18n="hero.note">
+            ไม่ต้องล็อกอิน — ตอบ 18 ข้อแล้วรู้ผลทันที
+          </p>
+
+          <!-- character cast lineup -->
+          <div class="cast" data-reveal style="--delay:500ms" role="region" aria-label="Featured Characters">
+            <figure class="cast__figure" data-spectrum="violet" data-type="INTJ-AH" tabindex="0" title="INTJ — นักวางแผนลับ">
+              <span class="cast__tag">INTJ<small>วางแผนลับ</small></span>
+              <img src="assets/img/characters/INTJ.webp" alt="INTJ character" loading="lazy" />
+            </figure>
+            <figure class="cast__figure" data-spectrum="green" data-type="ENFP-AH" tabindex="0" title="ENFP — เจ้าลูกหมาพลังล้น">
+              <span class="cast__tag">ENFP<small>พลังล้น</small></span>
+              <img src="assets/img/characters/ENFP.webp" alt="ENFP character" loading="lazy" />
+            </figure>
+            <figure class="cast__figure" data-spectrum="blue" data-type="INFJ-AH" tabindex="0" title="INFJ — ผู้หยั่งรู้">
+              <span class="cast__tag">INFJ<small>ผู้หยั่งรู้</small></span>
+              <img src="assets/img/characters/INFJ.webp" alt="INFJ character" loading="lazy" />
+            </figure>
+            <figure class="cast__figure" data-spectrum="amber" data-type="ESTP-AH" tabindex="0" title="ESTP — สายลุยไม่คุยเยอะ">
+              <span class="cast__tag">ESTP<small>สายลุย</small></span>
+              <img src="assets/img/characters/ESTP.webp" alt="ESTP character" loading="lazy" />
+            </figure>
+            <figure class="cast__figure" data-spectrum="violet" data-type="ENTP-AH" tabindex="0" title="ENTP — ตัวปั่นไอเดีย">
+              <span class="cast__tag">ENTP<small>ปั่นไอเดีย</small></span>
+              <img src="assets/img/characters/ENTP.webp" alt="ENTP character" loading="lazy" />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== STATS -->
+      <section class="section-tight" aria-label="Statistics">
+        <div class="container">
+          <div class="stats" id="stats-grid">
+            <!-- rendered by main.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== DIMENSIONS (ค้นหาสายงานที่ใช่ ผ่าน 6 มิติของตัวคุณ) -->
+      <section class="section" id="dimensions">
+        <div class="container container-wide">
+          
+          <!-- HEADER SECTION -->
+          <div class="section-head center" data-reveal style="text-align: center; margin-bottom: 2.5rem;">
+            <h2 class="dim-main-heading">
+              <span>ค้นหาสายงานที่ใช่ ผ่าน </span><span style="color: #2563eb; font-weight: 900; font-size: 1.18em; margin: 0 0.08em; display: inline-block;">6</span> <span style="background: linear-gradient(135deg, #6366f1 0%, #7c3aed 50%, #8b5cf6 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800;">มิติ</span><span>ของตัวคุณ</span>
+            </h2>
+            <p class="dim-main-subheading">
+              เข้าใจตัวเอง &nbsp;&nbsp;เลือกเส้นทางที่เหมาะกับคุณที่สุด
+            </p>
+          </div>
+
+          <!-- 6 DIMENSIONS GRID -->
+          <div class="dim-v2-grid">
+
+            <!-- CARD 1: พลังงาน (Energy) -->
+            <div class="dimension-card" data-reveal style="--delay: 50ms">
+              <div>
+                <!-- Card Header -->
+                <div class="dim-card-header">
+                  <div class="dim-card-header-left">
+                    <div class="number-circle" style="background: #227038;">
+                      1
+                    </div>
+                    <div>
+                      <h3 class="dim-card-title">พลังงาน</h3>
+                      <p class="dim-card-subtitle" style="color: #227038;">คุณได้พลังจากอะไร?</p>
+                    </div>
+                  </div>
+                  <!-- Battery Icon -->
+                  <img src="assets/img/local_assets/asset_235af27086a2eebf02bed4b1.png" alt="Battery Icon" class="dim-header-icon">
+                </div>
+
+                <!-- Options Split View -->
+                <div class="dim-card-body">
+                  <!-- VS Badge -->
+                  <div class="dim-vs-wrap">
+                    <div style="width: 1.75rem; height: 1.75rem; border-radius: 9999px; background: #227038; color: white; font-weight: 900; font-size: 0.68rem; display: flex; align-items: center; justify-content: center; border: 2px solid white; box-shadow: 0 1px 4px rgba(0,0,0,0.15);">
+                      VS
+                    </div>
+                  </div>
+
+                  <!-- Dashed Divider Line -->
+                  <div class="vs-line"></div>
+
+                  <!-- Left Option: สายลุย (E) -->
+                  <div class="dim-pole-col">
+                    <span class="dim-pill-badge" style="background: #ebf6ee; color: #227038;">
+                      สายลุย (E)
+                    </span>
+                    <div class="dim-img-wrap">
+                      <img src="assets/img/local_assets/asset_8dda3363415e8402ddf176f6.png" alt="สายลุย (E)" class="dim-char-img">
+                    </div>
+                    <div class="dim-text-wrap">
+                      <p class="dim-pole-text-bold">ชอบลุย ชอบคุย</p>
+                      <p class="dim-pole-text-sub">ทำแล้วได้พลัง</p>
+                    </div>
+                  </div>
+
+                  <!-- Right Option: สายเรียบ (I) -->
+                  <div class="dim-pole-col">
+                    <span class="dim-pill-badge" style="background: #ebf6ee; color: #227038;">
+                      สายเรียบ (I)
+                    </span>
+                    <div class="dim-img-wrap">
+                      <img src="assets/img/local_assets/asset_ba55b9e25c662ca121654ceb.png" alt="สายเรียบ (I)" class="dim-char-img">
+                    </div>
+                    <div class="dim-text-wrap">
+                      <p class="dim-pole-text-bold">ชอบคิดคนเดียว</p>
+                      <p class="dim-pole-text-sub">อยู่คนเดียวแล้วชาร์จ</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Footer Pill -->
+              <div class="dim-card-footer" style="background: #ebf6ee;">
+                <img src="assets/img/local_assets/asset_18e7f70d415c9aed038a4cef.png" alt="Target Icon" class="dim-footer-icon">
+                <p class="dim-footer-text" style="color: #227038;">
+                  <span style="font-weight: 700;">เหมาะกับคนที่ :</span>
+                  <span>ชอบทำงานกับคน / ทำงานเดี่ยว</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- CARD 2: การรับข้อมูล (Information) -->
+            <div class="dimension-card" data-reveal style="--delay: 100ms">
+              <div>
+                <!-- Card Header -->
+                <div class="dim-card-header">
+                  <div class="dim-card-header-left">
+                    <div class="number-circle" style="background: #1e60aa;">
+                      2
+                    </div>
+                    <div>
+                      <h3 class="dim-card-title">การรับข้อมูล</h3>
+                      <p class="dim-card-subtitle" style="color: #1e60aa;">คุณโฟกัสอะไรเป็นพิเศษ?</p>
+                    </div>
+                  </div>
+                  <!-- Magnifying Glass Icon -->
+                  <img src="assets/img/local_assets/asset_b6bb648df9102e0367357cf1.png" alt="Magnifying Glass" class="dim-header-icon">
+                </div>
+
+                <!-- Options Split View -->
+                <div class="dim-card-body">
+                  <!-- VS Badge -->
+                  <div class="dim-vs-wrap">
+                    <div style="width: 1.75rem; height: 1.75rem; border-radius: 9999px; background: #1e60aa; color: white; font-weight: 900; font-size: 0.68rem; display: flex; align-items: center; justify-content: center; border: 2px solid white; box-shadow: 0 1px 4px rgba(0,0,0,0.15);">
+                      VS
+                    </div>
+                  </div>
+
+                  <!-- Dashed Divider Line -->
+                  <div class="vs-line"></div>
+
+                  <!-- Left Option: สายเรียล (S) -->
+                  <div class="dim-pole-col">
+                    <span class="dim-pill-badge" style="background: #ebf2fb; color: #1e60aa;">
+                      สายเรียล (S)
+                    </span>
+                    <div class="dim-img-wrap">
+                      <img src="assets/img/local_assets/asset_a9834204f620112670ce18d2.png" alt="สายเรียล (S)" class="dim-char-img">
+                    </div>
+                    <div class="dim-text-wrap">
+                      <p class="dim-pole-text-bold">ชอบข้อเท็จจริง</p>
+                      <p class="dim-pole-text-sub">เห็นภาพชัดเจน</p>
+                    </div>
+                  </div>
+
+                  <!-- Right Option: สายเซนส์ (N) -->
+                  <div class="dim-pole-col">
+                    <span class="dim-pill-badge" style="background: #ebf2fb; color: #1e60aa;">
+                      สายเซนส์ (N)
+                    </span>
+                    <div class="dim-img-wrap">
+                      <img src="assets/img/local_assets/asset_c70f5f4a077c55f0c5c137b7.png" alt="สายเซนส์ (N)" class="dim-char-img">
+                    </div>
+                    <div class="dim-text-wrap">
+                      <p class="dim-pole-text-bold">ชอบจินตนาการ</p>
+                      <p class="dim-pole-text-sub">เห็นภาพใหญ่และอนาคต</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Footer Pill -->
+              <div class="dim-card-footer" style="background: #ebf2fb;">
+                <img src="assets/img/local_assets/asset_d215d6f9bd6b1faf8bbdd6c6.png" alt="User Icon" class="dim-footer-icon">
+                <p class="dim-footer-text" style="color: #1e60aa;">
+                  <span style="font-weight: 700;">เหมาะกับคนที่ :</span>
+                  <span>ชอบข้อมูลละเอียด / ชอบคิดภาพใหญ่</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- CARD 3: การตัดสินใจ (Decision Making) -->
+            <div class="dimension-card" data-reveal style="--delay: 150ms">
+              <div>
+                <!-- Card Header -->
+                <div class="dim-card-header">
+                  <div class="dim-card-header-left">
+                    <div class="number-circle" style="background: #68469b;">
+                      3
+                    </div>
+                    <div>
+                      <h3 class="dim-card-title">การตัดสินใจ</h3>
+                      <p class="dim-card-subtitle" style="color: #68469b;">คุณตัดสินใจด้วยอะไร?</p>
+                    </div>
+                  </div>
+                  <!-- Balance Scale Icon -->
+                  <img src="assets/img/local_assets/asset_1fc3b58806f1a3f19712b469.png" alt="Balance Scale" class="dim-header-icon">
+                </div>
+
+                <!-- Options Split View -->
+                <div class="dim-card-body">
+                  <!-- VS Badge -->
+                  <div class="dim-vs-wrap">
+                    <div style="width: 1.75rem; height: 1.75rem; border-radius: 9999px; background: #68469b; color: white; font-weight: 900; font-size: 0.68rem; display: flex; align-items: center; justify-content: center; border: 2px solid white; box-shadow: 0 1px 4px rgba(0,0,0,0.15);">
+                      VS
+                    </div>
+                  </div>
+
+                  <!-- Dashed Divider Line -->
+                  <div class="vs-line"></div>
+
+                  <!-- Left Option: สายตรรกะ (T) -->
+                  <div class="dim-pole-col">
+                    <span class="dim-pill-badge" style="background: #f4edf9; color: #68469b;">
+                      สายตรรกะ (T)
+                    </span>
+                    <div class="dim-img-wrap">
+                      <img src="assets/img/local_assets/asset_bc7dff77592dfca2ee981dd9.png" alt="สายตรรกะ (T)" class="dim-char-img">
+                    </div>
+                    <div class="dim-text-wrap">
+                      <p class="dim-pole-text-bold">ใช้เหตุผลเป็นหลัก</p>
+                      <p class="dim-pole-text-sub">เน้นความจริง</p>
+                    </div>
+                  </div>
+
+                  <!-- Right Option: สายแคร์ใจ (F) -->
+                  <div class="dim-pole-col">
+                    <span class="dim-pill-badge" style="background: #f4edf9; color: #68469b;">
+                      สายแคร์ใจ (F)
+                    </span>
+                    <div class="dim-img-wrap">
+                      <img src="assets/img/local_assets/asset_f56233a9ce493f2c03bc8058.png" alt="สายแคร์ใจ (F)" class="dim-char-img">
+                    </div>
+                    <div class="dim-text-wrap">
+                      <p class="dim-pole-text-bold">ให้ความรู้สึกและคุณค่า</p>
+                      <p class="dim-pole-text-sub">ใส่ใจคนและความสัมพันธ์</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Footer Pill -->
+              <div class="dim-card-footer" style="background: #f4edf9;">
+                <img src="assets/img/local_assets/asset_68b12a4c252d2c3b9e0e8445.png" alt="Heart Icon" class="dim-footer-icon">
+                <p class="dim-footer-text" style="color: #68469b;">
+                  <span style="font-weight: 700;">เหมาะกับคนที่ :</span>
+                  <span>ชอบเหตุผล / ใส่ใจความรู้สึกคน</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- CARD 4: การใช้ชีวิต (Lifestyle) -->
+            <div class="dimension-card" data-reveal style="--delay: 200ms">
+              <div>
+                <!-- Card Header -->
+                <div class="dim-card-header">
+                  <div class="dim-card-header-left">
+                    <div class="number-circle" style="background: #de9c16;">
+                      4
+                    </div>
+                    <div>
+                      <h3 class="dim-card-title">การใช้ชีวิต</h3>
+                      <p class="dim-card-subtitle" style="color: #de9c16;">คุณชอบชีวิตแบบไหน?</p>
+                    </div>
+                  </div>
+                  <!-- Checklist Clipboard Icon -->
+                  <img src="assets/img/local_assets/asset_1f3ff0393a5df24447568075.png" alt="Clipboard Icon" class="dim-header-icon">
+                </div>
+
+                <!-- Options Split View -->
+                <div class="dim-card-body">
+                  <!-- VS Badge -->
+                  <div class="dim-vs-wrap">
+                    <div style="width: 1.75rem; height: 1.75rem; border-radius: 9999px; background: #de9c16; color: white; font-weight: 900; font-size: 0.68rem; display: flex; align-items: center; justify-content: center; border: 2px solid white; box-shadow: 0 1px 4px rgba(0,0,0,0.15);">
+                      VS
+                    </div>
+                  </div>
+
+                  <!-- Dashed Divider Line -->
+                  <div class="vs-line"></div>
+
+                  <!-- Left Option: สายเป๊ะ (J) -->
+                  <div class="dim-pole-col">
+                    <span class="dim-pill-badge" style="background: #fdf6e6; color: #a66d09;">
+                      สายเป๊ะ (J)
+                    </span>
+                    <div class="dim-img-wrap">
+                      <img src="assets/img/local_assets/asset_ef1fa0bc391d9c45fd60e38f.png" alt="สายเป๊ะ (J)" class="dim-char-img">
+                    </div>
+                    <div class="dim-text-wrap">
+                      <p class="dim-pole-text-bold">ชอบวางแผน</p>
+                      <p class="dim-pole-text-sub">เป็นระบบ ชัดเจน</p>
+                    </div>
+                  </div>
+
+                  <!-- Right Option: สายอิสระ (P) -->
+                  <div class="dim-pole-col">
+                    <span class="dim-pill-badge" style="background: #fdf6e6; color: #a66d09;">
+                      สายอิสระ (P)
+                    </span>
+                    <div class="dim-img-wrap">
+                      <img src="assets/img/local_assets/asset_eaaa96adf8c8719c008ce76d.png" alt="สายอิสระ (P)" class="dim-char-img">
+                    </div>
+                    <div class="dim-text-wrap">
+                      <p class="dim-pole-text-bold">ชอบความยืดหยุ่น</p>
+                      <p class="dim-pole-text-sub">ปรับตัวตามสถานการณ์</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Footer Pill -->
+              <div class="dim-card-footer" style="background: #fdf6e6;">
+                <img src="assets/img/local_assets/asset_1445a1f69ba832045ebd21cf.png" alt="Clock Icon" class="dim-footer-icon">
+                <p class="dim-footer-text" style="color: #a66d09;">
+                  <span style="font-weight: 700;">เหมาะกับคนที่ :</span>
+                  <span>ชอบวางแผน / ชอบความยืดหยุ่น</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- CARD 5: ความมั่นคงทางใจ (Mental Resilience) -->
+            <div class="dimension-card" data-reveal style="--delay: 250ms">
+              <div>
+                <!-- Card Header -->
+                <div class="dim-card-header">
+                  <div class="dim-card-header-left">
+                    <div class="number-circle" style="background: #e46a1b;">
+                      5
+                    </div>
+                    <div>
+                      <h3 class="dim-card-title">ความมั่นคงทางใจ</h3>
+                      <p class="dim-card-subtitle" style="color: #e46a1b;">คุณรับมือกับอะไรได้ดีที่สุด?</p>
+                    </div>
+                  </div>
+                  <!-- Shield Icon -->
+                  <img src="assets/img/local_assets/asset_53e1ee2381d0a0608d57113f.png" alt="Shield Icon" class="dim-header-icon">
+                </div>
+
+                <!-- Options Split View -->
+                <div class="dim-card-body">
+                  <!-- VS Badge -->
+                  <div class="dim-vs-wrap">
+                    <div style="width: 1.75rem; height: 1.75rem; border-radius: 9999px; background: #e46a1b; color: white; font-weight: 900; font-size: 0.68rem; display: flex; align-items: center; justify-content: center; border: 2px solid white; box-shadow: 0 1px 4px rgba(0,0,0,0.15);">
+                      VS
+                    </div>
+                  </div>
+
+                  <!-- Dashed Divider Line -->
+                  <div class="vs-line"></div>
+
+                  <!-- Left Option: มุ่งตอบโจทย์ (A) -->
+                  <div class="dim-pole-col">
+                    <span class="dim-pill-badge" style="background: #fdf0e6; color: #c45408;">
+                      มุ่งตอบโจทย์ (A)
+                    </span>
+                    <div class="dim-img-wrap">
+                      <img src="assets/img/local_assets/asset_f9bc1917d531eeef8fa5896b.png" alt="มุ่งตอบโจทย์ (A)" class="dim-char-img">
+                    </div>
+                    <div class="dim-text-wrap">
+                      <p class="dim-pole-text-bold">ต้องการความสำเร็จ</p>
+                      <p class="dim-pole-text-sub">ชอบการแข่งขัน</p>
+                    </div>
+                  </div>
+
+                  <!-- Right Option: ค้นหาความหมาย (O) -->
+                  <div class="dim-pole-col">
+                    <span class="dim-pill-badge" style="background: #fdf0e6; color: #c45408;">
+                      ค้นหาความหมาย (O)
+                    </span>
+                    <div class="dim-img-wrap">
+                      <img src="assets/img/local_assets/asset_62eacb6f5e8d7a81859db464.png" alt="ค้นหาความหมาย (O)" class="dim-char-img">
+                    </div>
+                    <div class="dim-text-wrap">
+                      <p class="dim-pole-text-bold">ต้องการความหมาย</p>
+                      <p class="dim-pole-text-sub">ชอบการเติบโตและเรียนรู้</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Footer Pill -->
+              <div class="dim-card-footer" style="background: #fdf0e6;">
+                <img src="assets/img/local_assets/asset_9756a061b827e78a9cbfcd07.png" alt="Mountain Icon" class="dim-footer-icon">
+                <p class="dim-footer-text" style="color: #c45408;">
+                  <span style="font-weight: 700;">เหมาะกับคนที่ :</span>
+                  <span>เน้นผลลัพธ์ / เน้นการพัฒนา</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- CARD 6: การเข้าสังคม (Socializing) -->
+            <div class="dimension-card" data-reveal style="--delay: 300ms">
+              <div>
+                <!-- Card Header -->
+                <div class="dim-card-header">
+                  <div class="dim-card-header-left">
+                    <div class="number-circle" style="background: #cc3661;">
+                      6
+                    </div>
+                    <div>
+                      <h3 class="dim-card-title">การเข้าสังคม</h3>
+                      <p class="dim-card-subtitle" style="color: #cc3661;">คุณอยู่กับคนอื่นแบบไหนสบายใจ?</p>
+                    </div>
+                  </div>
+                  <!-- Two People Icon -->
+                  <img src="assets/img/local_assets/asset_97c41e64a635f54c27d166f9.png" alt="Social Icon" class="dim-header-icon">
+                </div>
+
+                <!-- Options Split View -->
+                <div class="dim-card-body">
+                  <!-- VS Badge -->
+                  <div class="dim-vs-wrap">
+                    <div style="width: 1.75rem; height: 1.75rem; border-radius: 9999px; background: #cc3661; color: white; font-weight: 900; font-size: 0.68rem; display: flex; align-items: center; justify-content: center; border: 2px solid white; box-shadow: 0 1px 4px rgba(0,0,0,0.15);">
+                      VS
+                    </div>
+                  </div>
+
+                  <!-- Dashed Divider Line -->
+                  <div class="vs-line"></div>
+
+                  <!-- Left Option: เซฟโซนกับคน (H) -->
+                  <div class="dim-pole-col">
+                    <span class="dim-pill-badge" style="background: #fbeaf0; color: #b8234e;">
+                      เซฟโซนกับคน (H)
+                    </span>
+                    <div class="dim-img-wrap">
+                      <img src="assets/img/local_assets/asset_f30b7ade616f32247c9d56f0.png" alt="เซฟโซนกับคน (H)" class="dim-char-img">
+                    </div>
+                    <div class="dim-text-wrap">
+                      <p class="dim-pole-text-bold">อยู่กับความสัมพันธ์</p>
+                      <p class="dim-pole-text-sub">และคุ้นเคย</p>
+                    </div>
+                  </div>
+
+                  <!-- Right Option: มีสเปซส่วนตัว (C) -->
+                  <div class="dim-pole-col">
+                    <span class="dim-pill-badge" style="background: #fbeaf0; color: #b8234e;">
+                      มีสเปซส่วนตัว (C)
+                    </span>
+                    <div class="dim-img-wrap">
+                      <img src="assets/img/local_assets/asset_6e259b6558c2b03ac47bc807.png" alt="มีสเปซส่วนตัว (C)" class="dim-char-img">
+                    </div>
+                    <div class="dim-text-wrap">
+                      <p class="dim-pole-text-bold">ต้องการพื้นที่ส่วนตัว</p>
+                      <p class="dim-pole-text-sub">ชอบความเป็นอิสระ</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Footer Pill -->
+              <div class="dim-card-footer" style="background: #fbeaf0;">
+                <img src="assets/img/local_assets/asset_0bae20a7aeede9903c9c0944.png" alt="Home Icon" class="dim-footer-icon">
+                <p class="dim-footer-text" style="color: #b8234e;">
+                  <span style="font-weight: 700;">เหมาะกับคนที่ :</span>
+                  <span>ชอบอยู่กับกลุ่ม / ชอบอยู่คนเดียว</span>
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ======================================================== SPECTRA: 4 สไตล์ 4 พลัง ของชาว PRISM64 -->
+      <section class="section" id="spectra">
+        <div class="spectra-app-container">
+          
+          <!-- HEADER -->
+          <header class="spectra-header-section" data-reveal>
+            <div class="spectra-badge-pill">
+              <i class="fa-solid fa-sparkles"></i>
+              <span>✦ 4 สเปกหลักของชาว PRISM64</span>
+            </div>
+            <h2 class="spectra-main-title">
+              4 สไตล์ 4 พลัง ของชาว <span class="spectra-gradient-text">PRISM64</span>
+            </h2>
+            <p class="spectra-subtitle">
+              แต่ละสเปกมีจุดแข็งไม่เหมือนกัน รวมกันแล้ว<span class="spectra-subtitle-highlight">โคตรลงตัว!</span>
+            </p>
+          </header>
+
+          <!-- CARDS GRID -->
+          <div class="spectra-cards-grid">
+            
+            <!-- CARD 01 PURPLE -->
+            <article class="style-card purple" data-reveal style="--delay: 50ms">
+              <div>
+                <div class="card-top">
+                  <div class="card-meta">
+                    <div class="card-num purple">01</div>
+                    <h3 class="card-title purple">สายม่วง</h3>
+                    <div class="card-subheaders">
+                      <p>สนุก คุยเก่ง</p>
+                      <p>เข้ากับคนง่าย</p>
+                    </div>
+                  </div>
+                  <div class="card-char-wrapper">
+                    <div class="char-crop char-purple"></div>
+                  </div>
+                </div>
+
+                <p class="card-desc">
+                  พลังแห่งการสื่อสาร เชื่อมคน<br>สร้างบรรยากาศให้ทีมมีพลัง
+                </p>
+
+                <hr class="separator">
+
+                <div class="mbti-section">
+                  <h4 class="mbti-title purple">สเปกที่เด่น</h4>
+                  <div class="mbti-pills">
+                    <span class="mbti-pill">INTJ</span>
+                    <span class="mbti-pill">INTP</span>
+                    <span class="mbti-pill">ENTJ</span>
+                    <span class="mbti-pill">ENTP</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-footer-box">
+                <div class="footer-icon">
+                  <i class="fa-solid fa-users"></i>
+                </div>
+                <div class="footer-text-content">
+                  <span class="footer-title purple">จุดแข็งหลัก</span>
+                  <span class="footer-desc">สื่อสารเก่ง • คนรัก • นัดรวมทีม</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 02 GREEN -->
+            <article class="style-card green" data-reveal style="--delay: 100ms">
+              <div>
+                <div class="card-top">
+                  <div class="card-meta">
+                    <div class="card-num green">02</div>
+                    <h3 class="card-title green">สายเขียว</h3>
+                    <div class="card-subheaders">
+                      <p>คิดเป็นระบบ</p>
+                      <p>รอบคอบ</p>
+                    </div>
+                  </div>
+                  <div class="card-char-wrapper">
+                    <div class="char-crop char-green"></div>
+                  </div>
+                </div>
+
+                <p class="card-desc">
+                  พลังแห่งการวิเคราะห์ วางแผน<br>ทำให้ทุกอย่างเดินหน้าอย่างมั่นคง
+                </p>
+
+                <hr class="separator">
+
+                <div class="mbti-section">
+                  <h4 class="mbti-title green">สเปกที่เด่น</h4>
+                  <div class="mbti-pills">
+                    <span class="mbti-pill">INFJ</span>
+                    <span class="mbti-pill">INFP</span>
+                    <span class="mbti-pill">ENFJ</span>
+                    <span class="mbti-pill">ENFP</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-footer-box">
+                <div class="footer-icon">
+                  <i class="fa-solid fa-bullseye"></i>
+                </div>
+                <div class="footer-text-content">
+                  <span class="footer-title green">จุดแข็งหลัก</span>
+                  <span class="footer-desc">วางแผนเก่ง • รอบคอบ • มองไกล</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 03 BLUE -->
+            <article class="style-card blue" data-reveal style="--delay: 150ms">
+              <div>
+                <div class="card-top">
+                  <div class="card-meta">
+                    <div class="card-num blue">03</div>
+                    <h3 class="card-title blue">สายน้ำเงิน</h3>
+                    <div class="card-subheaders">
+                      <p>เก่งเทค</p>
+                      <p>ชอบลงมือทำ</p>
+                    </div>
+                  </div>
+                  <div class="card-char-wrapper">
+                    <div class="char-crop char-blue"></div>
+                  </div>
+                </div>
+
+                <p class="card-desc">
+                  พลังแห่งเทคโนโลยี แก้ปัญหาไว<br>เปลี่ยนไอเดียให้เป็นของจริง
+                </p>
+
+                <hr class="separator">
+
+                <div class="mbti-section">
+                  <h4 class="mbti-title blue">สเปกที่เด่น</h4>
+                  <div class="mbti-pills">
+                    <span class="mbti-pill">ISTJ</span>
+                    <span class="mbti-pill">ISFJ</span>
+                    <span class="mbti-pill">ESTJ</span>
+                    <span class="mbti-pill">ESFJ</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-footer-box">
+                <div class="footer-icon">
+                  <i class="fa-solid fa-wrench"></i>
+                </div>
+                <div class="footer-text-content">
+                  <span class="footer-title blue">จุดแข็งหลัก</span>
+                  <span class="footer-desc">ลงมือไว • แก้ปัญหาเก่ง • ใช้เทคคล่อง</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 04 ORANGE -->
+            <article class="style-card orange" data-reveal style="--delay: 200ms">
+              <div>
+                <div class="card-top">
+                  <div class="card-meta">
+                    <div class="card-num orange">04</div>
+                    <h3 class="card-title orange">สายส้ม</h3>
+                    <div class="card-subheaders">
+                      <p>ผู้นำ</p>
+                      <p>มองภาพใหญ่</p>
+                    </div>
+                  </div>
+                  <div class="card-char-wrapper">
+                    <div class="char-crop char-orange"></div>
+                  </div>
+                </div>
+
+                <p class="card-desc">
+                  พลังแห่งวิสัยทัศน์ ตัดสินใจไว<br>พาทีมไปถึงเป้าหมาย
+                </p>
+
+                <hr class="separator">
+
+                <div class="mbti-section">
+                  <h4 class="mbti-title orange">สเปกที่เด่น</h4>
+                  <div class="mbti-pills">
+                    <span class="mbti-pill">ISTP</span>
+                    <span class="mbti-pill">ISFP</span>
+                    <span class="mbti-pill">ESTP</span>
+                    <span class="mbti-pill">ESFP</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-footer-box">
+                <div class="footer-icon">
+                  <i class="fa-solid fa-trophy"></i>
+                </div>
+                <div class="footer-text-content">
+                  <span class="footer-title orange">จุดแข็งหลัก</span>
+                  <span class="footer-desc">ภาวะผู้นำ • กล้าตัดสินใจ • มุ่งเป้า</span>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ======================================================== TYPES GRID -->
+      <section class="section" id="types">
+        <div class="container-wide container">
+          <div class="section-head center" data-reveal>
+            <span class="eyebrow" data-i18n="nav.types">💎 ครอบคลุมครบ 64 / 64 เฉดสี</span>
+            <h2 class="display-lg" data-i18n="types.heading">สำรวจครบ 64 ประเภทแบบเจาะลึก</h2>
+            <p class="lead" data-i18n="types.sub">
+              ลึกกว่า MBTI ทั่วไป (16 ไทป์) และ 16Personalities (32 ไทป์ A/T) ด้วยระบบ 6 มิติ (16 แม่แบบหลัก × 4 เฉดย่อย = 64 เฉดสีบริสุทธิ์)
+            </p>
+          </div>
+
+          <!-- View Mode Switcher -->
+          <div class="types-view-toolbar" data-reveal>
+            <div class="view-mode-tabs" role="tablist" aria-label="เลือกมุมมองตาราง">
+              <button class="view-mode-tab is-active" data-view="grouped" type="button">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>🗂️ 16 แม่แบบหลัก <small>(พร้อม 4 เฉดย่อยในตัว)</small></span>
+              </button>
+              <button class="view-mode-tab" data-view="all64" type="button">
+                <i class="fa-solid fa-gem"></i>
+                <span>💎 64 เฉดสีเต็มตาราง <small>(กางครบ 64 ใบ)</small></span>
+              </button>
+            </div>
+          </div>
+
+          <!-- filter bar -->
+          <div class="types-filter-container" data-reveal>
+            <!-- Spectrum Filters (4 สี) -->
+            <div class="filter-row">
+              <span class="filter-row__label">สเปกตรัม:</span>
+              <div class="filter-chips-wrap" role="group" aria-label="Filter by personality group">
+                <button class="chip filter-chip" data-filter="all" aria-pressed="true">
+                  <span class="chip__dot" style="background:var(--spectrum)"></span>
+                  <span>ทั้งหมด (16 ไทป์)</span>
+                </button>
+                <button class="chip filter-chip" data-filter="violet" aria-pressed="false">
+                  <span class="chip__dot" style="background:var(--sp-violet-a)"></span>
+                  <span>นักคิด / ผู้นำ (NT)</span>
+                </button>
+                <button class="chip filter-chip" data-filter="green" aria-pressed="false">
+                  <span class="chip__dot" style="background:var(--sp-green-a)"></span>
+                  <span>นักสร้างสรรค์ (NF)</span>
+                </button>
+                <button class="chip filter-chip" data-filter="blue" aria-pressed="false">
+                  <span class="chip__dot" style="background:var(--sp-blue-a)"></span>
+                  <span>ผู้พิทักษ์ (SJ)</span>
+                </button>
+                <button class="chip filter-chip" data-filter="amber" aria-pressed="false">
+                  <span class="chip__dot" style="background:var(--sp-amber-a)"></span>
+                  <span>สายลุย (SP)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Shade Filters (4 เฉดย่อย) -->
+            <div class="filter-row" id="shade-filters-row">
+              <span class="filter-row__label">เฉดย่อย:</span>
+              <div class="filter-chips-wrap" role="group" aria-label="Filter by sub-variant shade">
+                <button class="chip shade-filter-chip is-active" data-shade="all" aria-pressed="true">
+                  <span>✨ ทุกเฉดย่อย (All)</span>
+                </button>
+                <button class="chip shade-filter-chip" data-shade="AH" aria-pressed="false">
+                  <b>-AH</b> <span>มั่นใจ & เข้ากับคนง่าย</span>
+                </button>
+                <button class="chip shade-filter-chip" data-shade="AC" aria-pressed="false">
+                  <b>-AC</b> <span>นิ่งสงบ & ชิลจริง</span>
+                </button>
+                <button class="chip shade-filter-chip" data-shade="OH" aria-pressed="false">
+                  <b>-OH</b> <span>เซนส์ไว & แคร์ใจ</span>
+                </button>
+                <button class="chip shade-filter-chip" data-shade="OC" aria-pressed="false">
+                  <b>-OC</b> <span>คิดลึก & โลกส่วนตัว</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Search & Count Bar -->
+            <div class="filter-bottom-bar">
+              <div class="search-input-wrap">
+                <i class="fa-solid fa-magnifying-glass search-input-icon"></i>
+                <input type="search" class="field search-field" id="type-search"
+                       data-i18n-placeholder="types.search_placeholder"
+                       placeholder="พิมพ์ค้นหา... (เช่น INFJ, INFJ-OH, ผู้หยั่งรู้)" />
+              </div>
+              <div class="types-count-badge" id="types-count-badge">
+                <span class="mono" id="types-count"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="type-grid" id="types-grid">
+            <!-- rendered by main.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== FAQ -->
+      <section class="section" id="faq">
+        <div class="container container-text">
+          <div class="section-head center" data-reveal>
+            <span class="eyebrow" data-i18n="nav.faq">คำถามที่พบบ่อย</span>
+            <h2 class="display-lg" data-i18n="faq.heading">คำถามที่พบบ่อย (FAQ)</h2>
+            <p class="lead" data-i18n="faq.sub">ตอบทุกข้อสงสัยเกี่ยวกับ PRISM64 แบบสั้น กระชับ เข้าใจง่าย</p>
+          </div>
+          <div class="faq" id="faq-list" data-reveal>
+            <!-- rendered by main.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== CTA -->
+      <section class="section-tight">
+        <div class="container">
+          <div class="cta-band" data-reveal>
+            <h2 class="display-md" data-i18n="cta.heading">พร้อมค้นพบตัวตนใน 64 เฉดสีหรือยัง?</h2>
+            <p data-i18n="cta.sub">เริ่มทำแบบทดสอบเลยตอนนี้ — ฟรี ไม่ต้องสมัคร ใช้เวลาแค่ 3 นาที</p>
+            <a href="#test" class="btn btn--primary btn--lg">
+              <span data-i18n="cta.btn">เริ่มทำแบบทดสอบฟรีเลย →</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ======================================================== VIEW: TEST -->
+    <div id="view-test" class="fade-view" hidden>
+      <div class="container section">
+        <div class="test-shell">
+          <div class="section-head center">
+            <span class="eyebrow" data-i18n="nav.test">ทำแบบทดสอบ</span>
+            <h1 class="display-md" id="test-main-title" data-i18n="test.title">แบบทดสอบบุคลิกภาพ PRISM64</h1>
+            <p class="lead" data-i18n="test.sub">ตอบตามฟีลจริงของคุณเลย ไม่ต้องคิดเยอะ เพื่อผลลัพธ์ที่ตรงปกที่สุด!</p>
+          </div>
+
+          <!-- Auto-Resume Progress Notice (if recovered) -->
+          <div id="test-resume-notice" class="test-resume-notice mb-3" hidden></div>
+
+          <!-- Assessment Mode Selector (Quick vs Full) -->
+          <div id="test-mode-tabs-container" class="mb-4">
+            <!-- rendered by main.js -->
+          </div>
+
+          <!-- Sticky Progress Rail -->
+          <div class="progress-rail" id="test-progress-rail">
+            <div class="progress-rail__meta">
+              <span class="mono"><span data-i18n="test.q_num">ข้อที่</span> <b id="test-q-current">1</b> <span data-i18n="test.of">จาก</span> <span id="test-q-total">36</span></span>
+              <span class="mono" id="test-progress-pct">0%</span>
+            </div>
+            <div class="progress-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-fill" id="test-progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="progress-dots" id="test-progress-dots">
+              <!-- rendered by main.js -->
+            </div>
+          </div>
+
+          <!-- Question Card Container -->
+          <div id="test-card-container">
+            <!-- rendered by main.js -->
+          </div>
+
+          <!-- Test Navigation Controls -->
+          <div class="test-nav">
+            <button class="btn btn--ghost" id="test-btn-prev" disabled>
+              <span data-i18n="test.prev">← ย้อนกลับ</span>
+            </button>
+            <span class="test-nav__hint" data-i18n="test.hint">เลือกข้อที่ตรงกับตัวคุณมากที่สุดตอนนี้</span>
+            <button class="btn btn--primary" id="test-btn-next">
+              <span id="test-btn-next-text" data-i18n="test.next">ข้อถัดไป →</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================== VIEW: RESULT -->
+    <div id="view-result" class="fade-view" hidden>
+      <div class="container section">
+        <div id="result-container">
+          <!-- rendered dynamically by main.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================== VIEW: STEALTH ADMIN -->
+    <div id="view-admin" class="fade-view" hidden>
+      <!-- rendered dynamically by admin.js -->
+    </div>
+
+  </main>
+
+  <!-- ============================================================ FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a href="#home" class="brand" style="margin-bottom:1rem">
+            <svg class="brand__mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <polygon points="20,4 34,12 20,20 6,12" fill="url(#logo-top)" />
+              <polygon points="6,12 20,20 20,36 6,28" fill="url(#logo-left)" />
+              <polygon points="20,20 34,12 34,28 20,36" fill="url(#logo-right)" />
+              <circle cx="20" cy="20" r="3.5" fill="#FFFFFF" />
+            </svg>
+            <span class="brand__name">PRISM<span>64</span></span>
+          </a>
+          <p class="muted" style="font-size:.92rem;max-width:34ch" data-i18n="footer.desc">
+            PRISM64 ระบบสำรวจบุคลิกภาพ 64 เฉดสี เข้าใจตัวเอง เข้าใจคนรอบข้าง สรุปกระชับ ตรงจุด
+          </p>
+        </div>
+
+        <div>
+          <h4 data-i18n="footer.explore">สำรวจ</h4>
+          <ul>
+            <li><a href="#test" data-i18n="footer.test">ทำแบบทดสอบ</a></li>
+            <li><a href="#types" data-i18n="footer.types">ครบทั้ง 64 แบบ</a></li>
+            <li><a href="#dimensions" data-i18n="footer.dims">6 มิติหลัก</a></li>
+            <li><a href="#spectra" data-i18n="footer.spectra">4 สเปกตรัม</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 data-i18n="footer.resources">เมนูเพิ่มเติม</h4>
+          <ul>
+            <li><a href="#home" data-i18n="footer.about">เกี่ยวกับ PRISM64</a></li>
+            <li><a href="#dimensions" data-i18n="footer.research">งานวิจัยอ้างอิง</a></li>
+            <li><a href="#faq" data-i18n="footer.blog">บทความน่าสนใจ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 data-i18n="footer.legal">ข้อตกลง</h4>
+          <ul>
+            <li><a href="#home" data-i18n="footer.privacy">นโยบายความเป็นส่วนตัว</a></li>
+            <li><a href="#home" data-i18n="footer.terms">เงื่อนไขการใช้งาน</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="disclaimer mt-4">
+        <strong data-i18n="footer.disclaimer_title">ข้อจำกัดความรับผิดชอบ</strong>
+        <span data-i18n="footer.disclaimer_text">PRISM64 เป็นเครื่องมือสำหรับการสำรวจและเข้าใจตนเอง ไม่ใช่การวินิจฉัยทางการแพทย์หรือจิตวิทยา ข้อมูลทั้งหมดจัดทำขึ้นเพื่อการเรียนรู้และการพัฒนาตนเอง</span>
+      </div>
+
+      <div class="site-footer__base">
+        <span data-i18n="footer.copyright">© 2026 PRISM64 — สรุปตัวตนใน 64 เฉดสี</span>
+        <span class="mono">One light. Sixty-four shades.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================ MODAL -->
+  <div class="modal-overlay hidden" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal" id="type-modal" data-spectrum="violet">
+      <!-- rendered by main.js -->
+    </div>
+  </div>
+
+  <!-- ============================================================ TOAST -->
+  <div id="toast" class="toast hidden" role="status" aria-live="polite">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--p-emerald)"><polyline points="20 6 9 17 4 12"/></svg>
+    <span id="toast-msg">Link copied!</span>
+  </div>
+
+  <!-- ============================================================ SCRIPTS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="assets/js/data-core.js?v=5.3_balanced_story_card"></script>
+  <script src="assets/js/i18n.js?v=5.3_balanced_story_card"></script>
+  <script src="assets/js/main.js?v=5.3_balanced_story_card"></script>
+  <script src="assets/js/admin.js?v=5.3_balanced_story_card"></script>
+
+</body>
+</html>
