@@ -16,7 +16,7 @@ const PRISM = (() => {
   /* --------------------------------------------------------- State */
   let state = {
     lang: I18N.getLang(),
-    theme: localStorage.getItem('prism64-theme') || 'dark',
+    theme: localStorage.getItem('prism64-theme') || 'light',
     currentView: 'home', // 'home' | 'test' | 'result'
     filter: 'all',
     search: '',
