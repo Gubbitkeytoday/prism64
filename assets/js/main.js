@@ -1259,46 +1259,38 @@ const PRISM = (() => {
     _bindTestControls();
   }
 
-  function _renderTestModeTabs() {
-    const tabsContainer = $('#test-mode-tabs-container');
-    if (!tabsContainer) return;
+    function _renderTestModeTabs() {
+    const btnQuick = $('#mode-btn-quick');
+    const btnFull = $('#mode-btn-full');
+    if (!btnQuick || !btnFull) return;
 
     const isQuick = state.testMode === 'quick';
-    const lang = state.lang;
+    btnQuick.classList.toggle('is-active', isQuick);
+    btnFull.classList.toggle('is-active', !isQuick);
 
-    tabsContainer.innerHTML = `
-      <div class="test-mode-tabs" role="tablist" aria-label="เลือกโหมดแบบทดสอบ">
-        <button class="test-mode-tab ${isQuick ? 'is-active' : ''}" data-mode="quick" role="tab" aria-selected="${isQuick}">
-          <span class="mode-tab__icon">⚡</span>
-          <span class="mode-tab__text">
-            <strong>${lang === 'th' ? 'ฉบับเร่งด่วน (18 ข้อ)' : 'Quick Mode (18 Qs)'}</strong>
-            <small>${lang === 'th' ? 'ใช้เวลา 1.5 นาที • สรุปกระชับ ไวทันใจ' : '1.5 mins • Fast & concise'}</small>
-          </span>
-        </button>
-        <button class="test-mode-tab ${!isQuick ? 'is-active' : ''}" data-mode="full" role="tab" aria-selected="${!isQuick}">
-          <span class="mode-tab__icon">🎯</span>
-          <span class="mode-tab__text">
-            <strong>${lang === 'th' ? 'ฉบับเต็ม (36 ข้อ)' : 'Full Mode (36 Qs)'}</strong>
-            <small>${lang === 'th' ? 'ใช้เวลา 3 นาที • แม่นยำ ละเอียดลึกซึ้ง' : '3 mins • Deep & maximum precision'}</small>
-          </span>
-        </button>
-      </div>
-    `;
+    btnQuick.onclick = () => {
+      if (state.testMode !== 'quick') {
+        state.testMode = 'quick';
+        localStorage.setItem('prism64-test-mode', 'quick');
+        _clearInProgressTest();
+        _renderResumeNotice();
+        _renderTestModeTabs();
+        _renderTestProgress();
+        _renderTestQuestion();
+      }
+    };
 
-    tabsContainer.querySelectorAll('.test-mode-tab').forEach(btn => {
-      btn.onclick = () => {
-        const mode = btn.dataset.mode;
-        if (mode !== state.testMode) {
-          state.testMode = mode;
-          localStorage.setItem('prism64-test-mode', mode);
-          _clearInProgressTest();
-          _renderResumeNotice();
-          _renderTestModeTabs();
-          _renderTestProgress();
-          _renderTestQuestion();
-        }
-      };
-    });
+    btnFull.onclick = () => {
+      if (state.testMode !== 'full') {
+        state.testMode = 'full';
+        localStorage.setItem('prism64-test-mode', 'full');
+        _clearInProgressTest();
+        _renderResumeNotice();
+        _renderTestModeTabs();
+        _renderTestProgress();
+        _renderTestQuestion();
+      }
+    };
   }
 
   function _renderTestProgress() {
@@ -1311,28 +1303,11 @@ const PRISM = (() => {
     const totalEl = $('#test-q-total');
     const pctEl = $('#test-progress-pct');
     const fillEl = $('#test-progress-fill');
-    const dotsEl = $('#test-progress-dots');
-    const titleEl = $('#test-main-title');
-
-    if (titleEl) {
-      titleEl.textContent = state.lang === 'th' 
-        ? `แบบทดสอบบุคลิกภาพ PRISM64 (${total} ข้อ)` 
-        : `PRISM64 Personality Assessment (${total} Qs)`;
-    }
 
     if (currentEl) currentEl.textContent = state.testCurrentIdx + 1;
     if (totalEl) totalEl.textContent = total;
     if (pctEl) pctEl.textContent = `${pct}%`;
     if (fillEl) fillEl.style.width = `${pct}%`;
-
-    if (dotsEl) {
-      dotsEl.innerHTML = questions.map((q, i) => {
-        let cls = '';
-        if (state.testAnswers[q.id] !== undefined) cls = 'is-done';
-        if (i === state.testCurrentIdx) cls += ' is-current';
-        return `<i class="${cls}" title="Q${i + 1}"></i>`;
-      }).join('');
-    }
 
     const prevBtn = $('#test-btn-prev');
     const nextBtn = $('#test-btn-next');
