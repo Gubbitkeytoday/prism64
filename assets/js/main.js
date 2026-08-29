@@ -1687,24 +1687,20 @@ const PRISM = (() => {
         </div>
       </div>
 
-      <!-- Action Buttons Row -->
-      <div class="row row-between mt-3 mb-3">
-        <div class="row">
-          <a href="#test" class="btn btn--primary">
-            🔄 <span>${I18N.t('result.retake')}</span>
-          </a>
-          <a href="#types" class="btn btn--ghost">
-            ✨ <span>${I18N.t('result.explore_all')}</span>
-          </a>
-        </div>
-        <div class="row">
-          <button class="btn btn--ghost" id="btn-save-story" style="background:linear-gradient(100deg, rgba(236,72,153,0.15), rgba(139,92,246,0.15)); border-color:var(--p-fuchsia);">
-            📸 <span>บันทึกรูป Story (IG/TikTok)</span>
-          </button>
-          <button class="btn btn--ghost" id="btn-share-link">
-            🔗 <span>${I18N.t('result.copy_link')}</span>
-          </button>
-        </div>
+      <!-- Action Buttons 2x2 Grid -->
+      <div class="result-actions-grid">
+        <a href="#test" class="btn btn--primary">
+          🔄 <span>${I18N.t('result.retake')}</span>
+        </a>
+        <a href="#types" class="btn btn--ghost">
+          ✨ <span>${I18N.t('result.explore_all')}</span>
+        </a>
+        <button class="btn btn--ghost" id="btn-save-story" style="background:linear-gradient(100deg, rgba(236,72,153,0.12), rgba(139,92,246,0.12)); border-color:var(--p-fuchsia);">
+          📸 <span>บันทึกรูป Story (IG/TikTok)</span>
+        </button>
+        <button class="btn btn--ghost" id="btn-share-link">
+          🔗 <span>${I18N.t('result.copy_link')}</span>
+        </button>
       </div>
 
       <!-- Result Layout: 2 Columns -->

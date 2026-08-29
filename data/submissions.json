@@ -1,5 +1,66 @@
 [
   {
+    "id": "sub_73a06bc2",
+    "timestamp": 1787996499666,
+    "fullCode": "ESTJ-AH",
+    "coreCode": "ESTJ",
+    "variantKey": "AH",
+    "title": "ผู้อำนวยการผู้ทรงพลัง",
+    "testMode": "quick",
+    "scores": {
+      "energy": {
+        "pole1": "E",
+        "pole2": "I",
+        "score": 50
+      },
+      "input": {
+        "pole1": "S",
+        "pole2": "N",
+        "score": 50
+      },
+      "deciding": {
+        "pole1": "T",
+        "pole2": "F",
+        "score": 50
+      },
+      "structure": {
+        "pole1": "J",
+        "pole2": "P",
+        "score": 50
+      },
+      "identity": {
+        "pole1": "A",
+        "pole2": "O",
+        "score": 50
+      },
+      "relating": {
+        "pole1": "H",
+        "pole2": "C",
+        "score": 50
+      }
+    },
+    "ip": "127.0.0.1",
+    "geo": {
+      "city": "Khlong Luang",
+      "region": "Changwat Pathum Thani",
+      "country": "Thailand",
+      "countryCode": "TH",
+      "lat": 14.0646611,
+      "lng": 100.6460614,
+      "org": "True Online"
+    },
+    "device": {
+      "os": "macOS",
+      "browser": "Safari",
+      "screen": "430x932",
+      "type": "Mobile",
+      "language": "en-US",
+      "colorDepth": 24,
+      "pixelRatio": 3,
+      "hardwareConcurrency": 8
+    }
+  },
+  {
     "id": "sub_9441d0b5",
     "timestamp": 1787986530664,
     "fullCode": "ESTJ-AH",
