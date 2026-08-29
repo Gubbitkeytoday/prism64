@@ -1,15 +1,36 @@
 # 🔮 PRISM64 — 64 Shades of Personality Intelligence
 
 <p align="center">
-  <img src="assets/img/og-preview.jpg" alt="PRISM64 Banner" width="100%" style="border-radius: 16px; box-shadow: 0 12px 32px rgba(0,0,0,0.4);" />
+  <img src="portfolio_showcase/01_Landing_Hero_Showcase.png" alt="PRISM64 Hero Showcase" width="100%" style="border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.5);" />
 </p>
 
 <p align="center">
-  <a href="https://github.com"><img src="https://img.shields.io/badge/PRISM64-v5.3.0-8B5CF6?style=for-the-badge&logo=crystal&logoColor=white" alt="Version"></a>
+  <a href="https://github.com/Gubbitkeytoday/prism64"><img src="https://img.shields.io/badge/PRISM64-v5.3.0-8B5CF6?style=for-the-badge&logo=crystal&logoColor=white" alt="Version"></a>
   <a href="https://render.com"><img src="https://img.shields.io/badge/Deploy-Render.com-00BFFF?style=for-the-badge&logo=render&logoColor=white" alt="Render"></a>
   <a href="https://ai.google.dev"><img src="https://img.shields.io/badge/Gemini_Spark_MCP-Ready-FF4081?style=for-the-badge&logo=google&logoColor=white" alt="Gemini Spark"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-10B981?style=for-the-badge" alt="License"></a>
 </p>
+
+---
+
+## 📸 Visual Showcase & Portfolio Gallery
+
+### 🌟 Interactive Web Application & Visual Engineering
+
+| 1. Landing Page & 3D Hero | 2. HEXACO 6-Dimension Quiz |
+| :---: | :---: |
+| ![Landing Page](portfolio_showcase/01_Landing_Hero_Showcase.png) | ![Quiz Interface](portfolio_showcase/02_HEXACO_Assessment_Test.png) |
+| *Cyberpunk glassmorphism landing with 3D Motion Hero* | *Adaptive 5-level Likert scale psychological assessment* |
+
+| 3. In-Depth Personality Result | 4. 9:16 Social Story Studio (IG/TikTok) |
+| :---: | :---: |
+| ![Result Page](portfolio_showcase/03_Personality_Result_ESTJ_AH.png) | ![Story Card Studio](portfolio_showcase/04_Story_Card_Studio_Modal.png) |
+| *3D Character Podium, Spider Radar & Bento 6-Dimension profile* | *High-density 1080×1920 Story Card generator (Light Pearl & Dark)* |
+
+| 5. Stealth Admin Dashboard & Live Geo Map | 6. 3D Motion Visual Showcase |
+| :---: | :---: |
+| ![Admin Live Geo Map](portfolio_showcase/05_Live_GeoMap_Admin_Dashboard.png) | [![Watch Video](portfolio_showcase/01_Landing_Hero_Showcase.png)](portfolio_showcase/06_PRISM64_Motion_Hero_Showcase.mp4) |
+| *Real-time GPS/IP Telemetry on dark Leaflet.js map* | *[▶️ Watch 3D Prism Motion Video (MP4)](portfolio_showcase/06_PRISM64_Motion_Hero_Showcase.mp4)* |
 
 ---
 
@@ -49,7 +70,7 @@ PRISM64 evaluates human behavior across 6 independent bipolar spectrums:
 ### Run Locally
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/prism64.git
+git clone https://github.com/Gubbitkeytoday/prism64.git
 cd prism64
 
 # 2. Start the multi-threaded HTTP & MCP server
@@ -129,19 +150,23 @@ prism64/
 │   └── img/
 │       ├── characters/         # 16 3D rendered character models
 │       └── careers/            # 25+ 3D isometric clay diorama visuals
+├── portfolio_showcase/          # High-resolution portfolio showcase gallery & video
+│   ├── 01_Landing_Hero_Showcase.png
+│   ├── 02_HEXACO_Assessment_Test.png
+│   ├── 03_Personality_Result_ESTJ_AH.png
+│   ├── 04_Story_Card_Studio_Modal.png
+│   ├── 05_Live_GeoMap_Admin_Dashboard.png
+│   └── 06_PRISM64_Motion_Hero_Showcase.mp4
 ├── data/
 │   ├── submissions.json        # Persistent assessment telemetry store
 │   └── visitors.json           # Live visitor session cache
-├── .github/
-│   └── workflows/
-│       └── ci.yml              # GitHub Actions automated CI workflow
 ├── Dockerfile                  # Production container definition
 ├── docker-compose.yml          # Container orchestration
 ├── render.yaml                 # 1-Click Render blueprint config
 ├── Procfile                    # Process execution file
 ├── server_mcp.py               # Multi-threaded HTTP & JSON-RPC MCP server
 ├── LICENSE                     # MIT License
-└── README.md                   # Project documentation
+└── README.md                   # Project documentation & visual showcase
 ```
 
 ---
