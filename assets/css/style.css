@@ -4419,3 +4419,471 @@ body:has(#view-test:not([hidden])) .site-footer {
   border-top: 1px solid var(--line-2);
   background: var(--surface);
 }
+
+
+/* ==========================================================================
+   22. DEDICATED MOBILE-FIRST ADAPTIVE ENGINE (DESKTOP VS MOBILE DECOUPLED)
+   ========================================================================== */
+
+/* 1. Global Viewport & Touch Physics */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Mobile Specific Overrides (< 768px) */
+@media (max-width: 768px) {
+
+  /* Typography Scale */
+  :root {
+    --nav-h: 58px;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  .container {
+    padding-left: clamp(1rem, 4vw, 1.25rem) !important;
+    padding-right: clamp(1rem, 4vw, 1.25rem) !important;
+  }
+
+  .section {
+    padding: clamp(2.5rem, 6vw, 3.5rem) 0 !important;
+  }
+
+  .display-xl {
+    font-size: clamp(2rem, 8vw, 2.5rem) !important;
+    line-height: 1.18 !important;
+  }
+
+  .display-lg {
+    font-size: clamp(1.75rem, 7vw, 2.2rem) !important;
+    line-height: 1.22 !important;
+  }
+
+  .display-md {
+    font-size: clamp(1.4rem, 5.5vw, 1.75rem) !important;
+    line-height: 1.28 !important;
+  }
+
+  .section-head {
+    margin-bottom: 1.8rem !important;
+  }
+  .section-head .lead {
+    font-size: 0.92rem !important;
+    line-height: 1.55 !important;
+  }
+
+  /* Header & Mobile Nav Drawer */
+  .site-header {
+    height: var(--nav-h) !important;
+    padding: 0 1rem !important;
+  }
+
+  .brand__name {
+    font-size: 1.15rem !important;
+  }
+
+  .nav {
+    position: fixed !important;
+    top: var(--nav-h) !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    background: var(--surface) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    border-bottom: 1.5px solid var(--line) !important;
+    padding: 1.2rem 1.4rem 1.8rem 1.4rem !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.8rem !important;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .nav a {
+    font-size: 1rem !important;
+    padding: 0.75rem 1rem !important;
+    border-radius: var(--r-lg) !important;
+    background: var(--surface-2) !important;
+    border: 1px solid var(--line) !important;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 2.5rem 0.5rem 1.5rem 0.5rem !important;
+    text-align: center;
+  }
+
+  .hero .display-lg {
+    margin-bottom: 0.8rem !important;
+  }
+
+  .hero .lead {
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .hero__actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 340px !important;
+    margin: 0 auto 1.8rem auto !important;
+    gap: 0.75rem !important;
+  }
+
+  .hero__actions .btn {
+    width: 100% !important;
+    min-height: 50px !important;
+    justify-content: center !important;
+    font-size: 0.98rem !important;
+    border-radius: var(--r-xl) !important;
+  }
+
+  .hero__cast {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 0.6rem !important;
+    padding: 0.5rem 0.2rem !important;
+    margin-top: 0.5rem !important;
+  }
+
+  .cast__figure {
+    flex: 0 0 100px !important;
+    width: 100px !important;
+    transform: none !important;
+  }
+
+  .cast__figure img {
+    height: 120px !important;
+    object-fit: contain;
+  }
+
+  .cast__badge {
+    font-size: 0.68rem !important;
+    padding: 0.2rem 0.5rem !important;
+  }
+
+  /* Stats Bento Grid */
+  .stats__grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.65rem !important;
+  }
+
+  .stat-card {
+    padding: 1rem 0.75rem !important;
+    border-radius: var(--r-xl) !important;
+  }
+
+  .stat-card .display-md {
+    font-size: 1.85rem !important;
+  }
+
+  .stat-card p {
+    font-size: 0.78rem !important;
+  }
+
+  /* 6 Dimensions Section (Full-Width Clean Cards) */
+  .dim-v2-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .dimension-card {
+    padding: 1.4rem 1.15rem 1.2rem !important;
+    border-radius: 1.8rem !important;
+  }
+
+  .dim-card-header {
+    margin-bottom: 1rem !important;
+  }
+
+  .dim-card-title {
+    font-size: 1.18rem !important;
+  }
+
+  .dim-card-subtitle {
+    font-size: 0.85rem !important;
+  }
+
+  .dim-pole-col h4 {
+    font-size: 0.88rem !important;
+    margin-top: 0.35rem !important;
+  }
+
+  .dim-pole-col p {
+    font-size: 0.76rem !important;
+    line-height: 1.4 !important;
+  }
+
+  /* 4 Spectra Section */
+  .spectra__grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .spectrum-card {
+    padding: 1.25rem 1.1rem !important;
+    border-radius: var(--r-xl) !important;
+  }
+
+  /* 64 Types Directory */
+  .types-view-toolbar {
+    margin-bottom: 1rem !important;
+  }
+
+  .view-mode-tabs {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.4rem !important;
+    padding: 4px !important;
+    border-radius: var(--r-xl) !important;
+  }
+
+  .view-mode-tab {
+    padding: 0.6rem 0.5rem !important;
+    font-size: 0.76rem !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .types-filter-container {
+    padding: 1rem 0.85rem !important;
+    border-radius: var(--r-2xl) !important;
+  }
+
+  .filter-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.4rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+
+  .filter-row__label {
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    color: var(--text) !important;
+  }
+
+  .filter-chips-wrap {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    width: 100% !important;
+    padding: 0.2rem 0.1rem 0.5rem 0.1rem !important;
+    gap: 0.45rem !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+  .filter-chips-wrap::-webkit-scrollbar { display: none; }
+
+  .filter-chip, .shade-filter-chip {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    font-size: 0.78rem !important;
+    padding: 0.45rem 0.85rem !important;
+    border-radius: var(--r-full) !important;
+  }
+
+  .filter-bottom-bar {
+    flex-direction: column !important;
+    gap: 0.6rem !important;
+  }
+
+  .search-input-wrap {
+    width: 100% !important;
+  }
+
+  .types-count-badge {
+    font-size: 0.78rem !important;
+    text-align: center;
+    width: 100% !important;
+  }
+
+  /* 2-Column High-Performance Mobile Grid */
+  .type-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+
+  .type-card {
+    padding: 0 !important;
+    border-radius: var(--r-xl) !important;
+    overflow: hidden !important;
+  }
+
+  .type-card__art {
+    height: 135px !important;
+  }
+
+  .type-card__art img {
+    max-height: 125px !important;
+  }
+
+  .type-card__body {
+    padding: 0.75rem 0.65rem !important;
+  }
+
+  .type-card__name {
+    font-size: 0.92rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .type-card__tag {
+    font-size: 0.74rem !important;
+    line-height: 1.35 !important;
+    -webkit-line-clamp: 2 !important;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .type-card__blurb {
+    display: none !important;
+  }
+
+  .type-card__highlight-pill {
+    font-size: 0.68rem !important;
+    padding: 0.25rem 0.45rem !important;
+    margin: 0.4rem 0 !important;
+  }
+
+  .type-card__shades-row {
+    gap: 3px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .type-card__shade-tag {
+    font-size: 0.64rem !important;
+    padding: 0.15rem 0.35rem !important;
+  }
+
+  .shade-card-64 {
+    padding: 0.85rem 0.7rem !important;
+    border-radius: var(--r-xl) !important;
+  }
+
+  .shade-card-64__art-wrap {
+    height: 110px !important;
+  }
+
+  /* Modal Bottom Sheet */
+  .modal-overlay {
+    align-items: flex-end !important;
+    padding: 0 !important;
+  }
+
+  .modal-container, #type-modal {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 90dvh !important;
+    border-radius: 28px 28px 0 0 !important;
+    border-bottom: none !important;
+    animation: slideUpSheet 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+
+  @keyframes slideUpSheet {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  .modal-header-banner {
+    padding: 1.2rem 1rem 0.8rem 1rem !important;
+  }
+
+  .modal-header-banner img {
+    height: 125px !important;
+  }
+
+  .modal-body {
+    padding: 1rem !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .variant-chips-bar {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.45rem !important;
+  }
+
+  .variant-chip {
+    padding: 0.5rem 0.6rem !important;
+    font-size: 0.76rem !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .modal__tabs .tabs {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    width: 100% !important;
+    padding: 0.2rem 0.1rem 0.5rem 0.1rem !important;
+    gap: 0.45rem !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+  .modal__tabs .tabs::-webkit-scrollbar { display: none; }
+
+  .modal__tabs .tabs [role="tab"] {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    font-size: 0.78rem !important;
+    padding: 0.45rem 0.85rem !important;
+    border-radius: var(--r-full) !important;
+  }
+
+  /* Result View on Mobile */
+  .verdict__inner {
+    grid-template-columns: 1fr !important;
+    gap: 1.4rem !important;
+    text-align: center;
+  }
+
+  .verdict__figure {
+    order: -1;
+    margin: 0 auto;
+    width: 160px !important;
+    height: 160px !important;
+  }
+
+  .verdict__figure img {
+    height: 150px !important;
+  }
+
+  .verdict__code {
+    font-size: 2.2rem !important;
+  }
+
+  .breakdown-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.2rem !important;
+  }
+
+  .actions-row {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+
+  .actions-row .btn {
+    width: 100% !important;
+  }
+}
