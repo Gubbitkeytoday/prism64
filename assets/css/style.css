@@ -647,7 +647,12 @@ html[data-theme="dark"] .hero__scrim {
   text-shadow: 0 2px 18px rgba(0,0,0, 0.6);
 }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; align-items: center; }
-.hero__note { margin-top: 1.2rem; font-size: .88rem; color: rgba(255, 255, 255, 0.78); font-weight: 500; }
+.hero__note {
+  margin-top: 1rem;
+  font-size: .88rem;
+  color: var(--text-2);
+  font-weight: 600;
+}
 
 /* Character Campfire Lineup */
 .cast {
@@ -4519,60 +4524,179 @@ html, body {
     font-weight: 700;
   }
 
-  /* Hero Section */
+  
+  
+  /* Mobile Hero Section & 3D Squad Stagger Formation (3 Back, 2 Front) */
   .hero {
-    padding: 2.5rem 0.5rem 1.5rem 0.5rem !important;
+    padding: clamp(2rem, 5vw, 3.2rem) 1rem 1.5rem 1rem !important;
     text-align: center;
   }
 
-  .hero .display-lg {
-    margin-bottom: 0.8rem !important;
+  .hero__inner {
+    width: 100% !important;
+    max-width: 480px !important;
+    margin: 0 auto !important;
   }
 
-  .hero .lead {
-    font-size: 0.95rem !important;
-    line-height: 1.6 !important;
-    margin-bottom: 1.5rem !important;
+  .hero__kicker {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.4rem !important;
+    padding: 0.3rem 0.75rem !important;
+    border-radius: var(--r-full) !important;
+    max-width: 100% !important;
+    margin-bottom: 0.85rem !important;
   }
 
-  .hero__actions {
+  .hero__kicker b {
+    padding: 0.15rem 0.45rem !important;
+    font-size: 0.7rem !important;
+    border-radius: var(--r-full) !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  .hero__kicker span {
+    font-size: 0.76rem !important;
+    white-space: nowrap !important;
+  }
+
+  .hero .display-xl, .hero__title {
+    font-size: clamp(1.55rem, 6.5vw, 2.1rem) !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .hero__sub {
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 1.25rem !important;
+    color: var(--text-2) !important;
+  }
+
+  .hero__cta {
+    display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
-    max-width: 340px !important;
-    margin: 0 auto 1.8rem auto !important;
-    gap: 0.75rem !important;
+    max-width: 290px !important;
+    margin: 0 auto 0.6rem auto !important;
+    gap: 0.55rem !important;
   }
 
-  .hero__actions .btn {
+  .hero__cta .btn {
     width: 100% !important;
-    min-height: 50px !important;
+    min-height: 46px !important;
+    padding: 0.6rem 0.8rem !important;
+    font-size: 0.88rem !important;
+    white-space: nowrap !important;
     justify-content: center !important;
-    font-size: 0.98rem !important;
     border-radius: var(--r-xl) !important;
+    box-sizing: border-box !important;
   }
 
-  .hero__cast {
-    display: flex !important;
-    justify-content: center !important;
-    gap: 0.6rem !important;
-    padding: 0.5rem 0.2rem !important;
+  .hero__cta .btn svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .hero__note {
+    font-size: 0.78rem !important;
+    color: var(--text-2) !important;
     margin-top: 0.5rem !important;
+    margin-bottom: 1rem !important;
+    white-space: nowrap !important;
+  }
+
+  /* 3D Staggered Hero Cast Formation (3 Back, 2 Front) */
+  .cast {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 340px !important;
+    height: 205px !important;
+    min-height: 205px !important;
+    margin: 1.2rem auto 0 auto !important;
+    display: block !important;
   }
 
   .cast__figure {
-    flex: 0 0 100px !important;
-    width: 100px !important;
-    transform: none !important;
+    position: absolute !important;
+    margin: 0 !important;
+    cursor: pointer;
+    filter: drop-shadow(0 12px 18px rgba(10, 6, 30, 0.35)) !important;
+    transition: transform 0.3s var(--ease-spring), filter 0.3s var(--ease) !important;
   }
 
   .cast__figure img {
-    height: 120px !important;
-    object-fit: contain;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 125px !important;
+    object-fit: contain !important;
   }
 
-  .cast__badge {
-    font-size: 0.68rem !important;
-    padding: 0.2rem 0.5rem !important;
+  .cast__tag {
+    font-size: 0.62rem !important;
+    padding: 0.18rem 0.45rem !important;
+    top: -0.6rem !important;
+    white-space: nowrap !important;
+    border-radius: 6px !important;
+  }
+
+  /* BACK LAYER (3 Characters): INTJ (Left), INFJ (Center Raised), ENTP (Right) */
+  .cast__figure:nth-child(1) {
+    /* INTJ (Left Back) */
+    left: 5% !important;
+    bottom: 42px !important;
+    width: 80px !important;
+    z-index: 2 !important;
+    transform: scale(0.92) rotate(-4deg) !important;
+    opacity: 0.96 !important;
+  }
+
+  .cast__figure:nth-child(3) {
+    /* INFJ (Center Back - Raised) */
+    left: 50% !important;
+    bottom: 54px !important;
+    width: 88px !important;
+    z-index: 3 !important;
+    transform: translateX(-50%) scale(0.98) !important;
+    opacity: 1 !important;
+  }
+
+  .cast__figure:nth-child(5) {
+    /* ENTP (Right Back) */
+    right: 5% !important;
+    bottom: 42px !important;
+    width: 80px !important;
+    z-index: 2 !important;
+    transform: scale(0.92) rotate(4deg) !important;
+    opacity: 0.96 !important;
+  }
+
+  /* FRONT LAYER (2 Characters): ENFP (Left Front), ESTP (Right Front) */
+  .cast__figure:nth-child(2) {
+    /* ENFP (Left Front - Overlapping gap) */
+    left: 28% !important;
+    bottom: 0 !important;
+    width: 100px !important;
+    z-index: 5 !important;
+    transform: translateX(-50%) scale(1.05) !important;
+  }
+
+  .cast__figure:nth-child(4) {
+    /* ESTP (Right Front - Overlapping gap) */
+    right: 28% !important;
+    bottom: 0 !important;
+    width: 100px !important;
+    z-index: 5 !important;
+    transform: translateX(50%) scale(1.05) !important;
+  }
+
+  .cast__figure:active,
+  .cast__figure:hover {
+    transform: translateY(-8px) scale(1.12) !important;
+    z-index: 10 !important;
+    filter: drop-shadow(0 16px 24px rgba(139, 92, 246, 0.5)) !important;
   }
 
   /* Stats Bento Grid */
